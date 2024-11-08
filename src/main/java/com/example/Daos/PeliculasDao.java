@@ -52,19 +52,48 @@ public class PeliculasDao extends BaseDao{
         return pelicula;
     }
 
+    public void actualizarPelicula(Pelicula pelicula) {
+
+        String sql ="UPDATE pelicula " +
+                "SET titulo = ?," +
+                "director = ?," +
+                "anoPublicacion = ?," +
+                "rating = ?," +
+                "boxOffice = ?" +
+                "WHERE idPelicula = ?";
+        try (Connection conn = getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql)){
+
+            setPeliculaData(pelicula, pstmt);
+            pstmt.setInt(6, pelicula.getIdPelicula());
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setPeliculaData(Pelicula pelicula, PreparedStatement pstmt) throws SQLException {
+        pstmt.setString(1, pelicula.getTitulo());
+        pstmt.setString(2, pelicula.getDirector());
+        pstmt.setInt(3, pelicula.getAnoPublicacion());
+        pstmt.setDouble(4, pelicula.getRating());
+        pstmt.setDouble(5, pelicula.getBoxOffice());
+    }
+
     public void borrarPelicula(int id) {
         try (Connection conn = getConnection();
-            PreparedStatement pstmt =conn.prepareStatement("DELETE FROM peliculas WHERE idPelicula= ?")){
+            PreparedStatement pstmt =conn.prepareStatement("DELETE FROM pelicula WHERE idPelicula= ?")){
 
             pstmt.setInt(1, id);
-            pstmt.executeUpdate()
+            pstmt.executeUpdate();
             } catch (SQLException e){
                 e.printStackTrace();
         }
     }
 
 
-    public Pelicula FetchPeliculaData(ResultSet rs) throws SQLException{
+    private Pelicula FetchPeliculaData(ResultSet rs) throws SQLException{
         Pelicula pelicula = new Pelicula();
         pelicula.setIdPelicula(rs.getInt(1));
         pelicula.setTitulo(rs.getString(2));

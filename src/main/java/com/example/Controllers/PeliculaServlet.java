@@ -34,7 +34,7 @@ public class PeliculaServlet extends HttpServlet {
                     try {
                         peliculaid = Integer.parseInt(peliculaIDString);
                     } catch (NumberFormatException ex) {
-                        response.sendRedirect("PeliculaServlet");
+                        response.sendRedirect("PeliculasServlet");
                     }
 
                     Pelicula pelicula = peliculasDao.MostrarPelicula(Integer.parseInt(peliculaIDString));
@@ -43,8 +43,7 @@ public class PeliculaServlet extends HttpServlet {
                         peliculasDao.borrarPelicula(peliculaid);
                     }
                 }
-
-                response.sendRedirect("EmployeeServlet");
+                response.sendRedirect("PeliculasServlet");
                 break;
             case "mostrar":
                 if(request.getParameter("id") != null) {
@@ -64,6 +63,8 @@ public class PeliculaServlet extends HttpServlet {
                     else {
                         response.sendRedirect("PeliculasServlet");
                     }
+                } else {
+                    response.sendRedirect("PeliculasServlet");
                 }
                 break;
         }

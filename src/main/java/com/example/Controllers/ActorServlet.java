@@ -1,4 +1,8 @@
 package com.example.Controllers;
 
-public class ActorServlet {
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+
+@WebServlet(name = "ActoresServlet", urlPatterns = {"/ActoresServlet"})
+public class ActorServlet extends HttpServlet {
 }

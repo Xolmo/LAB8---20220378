@@ -8,7 +8,7 @@
 <%@ page import="com.example.Beans.Pelicula" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="listaPeliculas" type="java.util.ArrayList<com.example.Beans.Pelicula>" scope="request" />
+<jsp:useBean id="listaPeliculas" type="java.util.ArrayList<com.example.Beans.Pelicula>" scope="request"/>
 <html>
 <head>
     <title>Peliculas</title>
@@ -44,10 +44,12 @@
                 </td>
                 <td><%= "$ " + p.getBoxOffice()%>
                 </td>
-                <td><%= p.getGenero().getNombre()%></td>
-                <td>
+                <td><%= p.getGenero().getNombre()%>
                 </td>
-                <td></td>
+                <td><a href="<%=request.getContextPath()%>/ActoresServlet?action=listar&id=<%=p.getIdPelicula()%>">Ver actores</a>
+                </td>
+                <td><a href="<%=request.getContextPath()%>/PeliculasServlet?action=borrar&id=<%=p.getIdPelicula()%>">Eliminar</a>
+                </td>
             </tr>
             <%
                 i++;

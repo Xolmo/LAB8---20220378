@@ -15,34 +15,40 @@
 </head>
 <body>
 <h1><%="Pelicula Número " + Pelicula.getIdPelicula()%></h1>
-<table>
-  <tbody>
+<form method="POST" action="DetallesServlet?accion=actualizar">
+  <input type="submit" value="Guardar Pelicula"/>
+  <input type="hidden" name="idPelicula" id="idPelicula" value="<%=  Pelicula.getIdPelicula()%>">
+  <input type="hidden" name="idGenero" id="idGenero"  value="<%= Pelicula.getGenero().getIdGenero()%>">
+  <table>
+    <tbody>
     <tr>
-      <td>Título</td>
-      <td><%= Pelicula.getTitulo()%></td>
+      <td><label for="titulo">Titulo</label></td>
+      <td><input type="text" name="titulo" id="titulo" value="<%= Pelicula.getTitulo()%>"></td>
     </tr>
     <tr>
-      <td>Director</td>
-      <td><%= Pelicula.getDirector()%></td>
+      <td><label for="director">Director</label></td>
+      <td><input type="text" name="director" id="director" value="<%= Pelicula.getDirector()%>"></td>
     </tr>
     <tr>
-      <td>Año Publicación</td>
-      <td><%= Pelicula.getAnoPublicacion()%></td>
+      <td><label for="anoPublicacion">Año de Publicación</label></td>
+      <td><input type="text" name="anoPublicacion" id="anoPublicacion" value="<%= Pelicula.getAnoPublicacion()%>"></td>
     </tr>
     <tr>
-      <td>Rating</td>
-      <td><%= Pelicula.getRating()%></td>
+      <td><label for="rating">Rating</label></td>
+      <td><input type="text" name="rating" id="rating" value="<%= Pelicula.getRating()%>"></td>
     </tr>
     <tr>
-      <td>Box Office</td>
-      <td><%= Pelicula.getBoxOffice()%></td>
+      <td><label for="boxOffice">Box Office</label></td>
+      <td><input type="text" name="boxOffice" id="boxOffice" value="<%= Pelicula.getBoxOffice()%>"></td>
     </tr>
     <tr>
       <td>Actores</td>
       <td>Ver Actores</td>
     </tr>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</form>
+
 
 </body>
 </html>

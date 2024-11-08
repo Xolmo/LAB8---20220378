@@ -1,22 +1,22 @@
 package com.example.Beans;
 
 public class Protagonistas {
-    private int idPelicula;
-    private int idActor;
+    private Pelicula pelicula;
+    private Actor actor;
 
-    public int getIdPelicula() {
-        return idPelicula;
+    public Pelicula getPelicula() {
+        return pelicula;
     }
 
-    public void setIdPelicula(int idPelicula) {
-        this.idPelicula = idPelicula;
+    public void setPelicula(Pelicula pelicula) {
+        this.pelicula = pelicula;
     }
 
-    public int getIdActor() {
-        return idActor;
+    public Actor getActor() {
+        return actor;
     }
 
-    public void setIdActor(int idActor) {
-        this.idActor = idActor;
+    public void setActor(Actor actor) {
+        this.actor = actor;
     }
 }
